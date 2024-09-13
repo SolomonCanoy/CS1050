@@ -133,7 +133,7 @@ int main(void){
     }
     while (place!=1);
 
-    printf("The Reversed Mystic Code is %d", newCode);
+    printf("The Reversed Mystic Code is %d\n\n", newCode);
 
     return (0);
 }

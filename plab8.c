@@ -16,20 +16,38 @@ int main(void)
     srand(time(NULL));
 
     
-
+    int anotherGo = 1, choice = 1;
     char geneticArray[NUM_SEQUENCES][SEQUENCE_LENGTH];
 
     initializeSequences(geneticArray, NUM_SEQUENCES);
 
+    printf("Initial Sequences:\n");
     displaySequences(geneticArray, NUM_SEQUENCES);
-
-    if (calculateSimilarity(geneticArray) == 1)
+    
+    while (anotherGo == 1)
     {
-        printf("They are similar");
-    }
-    else
-    {
-        printf("Not similar");
+        printf("Choose an operation:\n1. Calculate Simularity\n2. Mutate Sequence\n3. Exit\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        switch(choice)
+        {
+            case 1:
+                if (calculateSimilarity(geneticArray) == 1)
+                {
+                    printf("They are similar");
+                }
+                else
+                {
+                    printf("Not similar");
+                }
+                break;
+            case 2:
+                mutateSequence(geneticArray);
+                break;
+            case 3:
+                anotherGo = 0;
+                break;
+        }
     }
     
 
@@ -123,5 +141,6 @@ void mutateSequence(char array[][SEQUENCE_LENGTH])
                 case 3: array[choice][randPos] = 'G'; break;
             }
     }
+    printf("Sequence after mutation:\n");
+    displaySequences(array, NUM_SEQUENCES);
 }
-
